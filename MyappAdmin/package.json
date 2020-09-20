@@ -1,0 +1,22 @@
+{
+  "name": "MyappAdmin",
+  "version": "1.0.0",
+  "private": true,
+  "config":{
+    "nuxt":{
+      "host":"127.0.0.1",
+      "post":"10010"
+    }
+  },
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "ant-design-vue": "^1.6.4",
+    "nuxt": "^2.14.0"
+  },
+  "devDependencies": {}
+}

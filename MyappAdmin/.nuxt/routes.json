@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Login",
+    "path": "/Login",
+    "component": "C:\\\\Users\\\\愚忠\\\\Desktop\\\\NewsPC_Mobile\\\\MyappAdmin\\\\pages\\\\Login\\\\index.vue",
+    "chunkName": "pages/Login/index",
+    "_name": "_edbd1cea"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\愚忠\\\\Desktop\\\\NewsPC_Mobile\\\\MyappAdmin\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_508fc820"
+  }
+]
