@@ -1,7 +1,8 @@
 import Nerv from "nervjs";
 import Taro from "@tarojs/taro-h5";
-import { View, Text } from '@tarojs/components';
+import { View } from '@tarojs/components';
 import './index.css';
+import HeaderSearch from "../../Component/HeaderSearch/index";
 export default class Index extends Taro.Component {
   constructor() {
     super(...arguments);
@@ -20,10 +21,10 @@ export default class Index extends Taro.Component {
   componentDidHide() {}
   render() {
     return <View className="index">
-        <Text>Hello world!</Text>
+        <HeaderSearch />
       </View>;
   }
   config = {
-    navigationBarTitleText: '首页'
+    navigationBarTitleText: '比克优选'
   };
 }

@@ -1,7 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.css'
-
+import HeaderSearch from '../../Component/HeaderSearch'
 export default class Index extends Component {
 
   componentWillMount () { }
@@ -28,7 +28,7 @@ export default class Index extends Component {
   render () {
     return (
       <View className='index'>
-        <Text>Hello Taro!</Text>
+        <HeaderSearch />
       </View>
     )
   }
