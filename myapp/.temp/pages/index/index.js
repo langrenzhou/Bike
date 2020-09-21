@@ -20,7 +20,7 @@ export default class Index extends Taro.Component {
   componentDidHide() {}
   render() {
     return <View className="index">
-        <Text>Hello world!</Text>
+        <Text>Hello</Text>
       </View>;
   }
   config = {
