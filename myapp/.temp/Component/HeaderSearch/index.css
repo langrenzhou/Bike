@@ -1,0 +1,26 @@
+.big{
+    width:100%;
+    height: .6rem;
+    background-color: #e43130;
+}
+.area{
+    width: 96%;
+    height: 100%;
+    margin:  0 auto;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+.left{
+  width: 6rem;
+  height: .4rem;;
+  background-color: white;
+  border-radius: 3rem;
+}
+.Type{
+    font-size: 0;
+}
+.right{
+    color:white;
+}

@@ -1,6 +1,7 @@
 import Taro, { Component } from "@tarojs/taro-h5";
 
 import './app.css';
+import "../static/js/zyl";
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
@@ -53,10 +54,14 @@ class App extends Component {
       path: '/pages/index/index',
       componentLoader: () => import( /* webpackChunkName: "index_index" */'./pages/index/index'),
       isIndex: true
+    }, {
+      path: '/pages/details/details',
+      componentLoader: () => import( /* webpackChunkName: "details_details" */'./pages/details/details'),
+      isIndex: false
     }]} customRoutes={{}} />;
   }
   config = {
-    pages: ["/pages/index/index"],
+    pages: ["/pages/index/index", "/pages/details/details"],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
