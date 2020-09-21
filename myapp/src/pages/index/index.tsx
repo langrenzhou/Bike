@@ -1,12 +1,12 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.css'
-
+import HeaderSearch from '../../Component/HeaderSearch'
 export default class Index extends Component {
 
   componentWillMount () { }
 
-  componentDidMount () { }
+  componentDidMount () { } 
 
   componentWillUnmount () { }
 
@@ -22,13 +22,13 @@ export default class Index extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: '首页'
+    navigationBarTitleText: '比克优选'
   }
 
   render () {
     return (
       <View className='index'>
-        <Text>Hello</Text>
+        <HeaderSearch />
       </View>
     )
   }

@@ -1,8 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import Index from './pages/index'
-
 import './app.css'
-
+import   '../static/js/zyl.js'
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
@@ -11,7 +10,8 @@ import './app.css'
 
 class App extends Component {
 
-  componentDidMount () {}
+  componentDidMount () {
+  }
 
   componentDidShow () {}
 
@@ -27,8 +27,9 @@ class App extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    pages: [
-      'pages/index/index'
+    pages: [ 
+      'pages/index/index',
+      'pages/details/details'
     ],
     window: {
       backgroundTextStyle: 'light',
