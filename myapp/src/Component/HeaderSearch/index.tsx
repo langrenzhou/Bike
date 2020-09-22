@@ -1,7 +1,13 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Input, Image } from '@tarojs/components'
 import './index.css'
+// import Ajax from '../../../static/js/Axios'
 class HeadeSearch extends Component {
+    componentWillMount(){
+    //    const aaa=new Ajax()
+    //    console.log(aaa)
+
+    }
     constructor(props) {
         super(props)
         this.state = {
@@ -9,7 +15,7 @@ class HeadeSearch extends Component {
         }
     }
  
-    render() {
+    render() {   
         return (
             <View className='big'>
                 <View className='area'>

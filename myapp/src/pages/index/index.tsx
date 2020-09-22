@@ -2,17 +2,18 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.css'
 import HeaderSearch from '../../Component/HeaderSearch'
+import TabBar from '../../Component/Tabar'
 export default class Index extends Component {
 
-  componentWillMount () { }
+  componentWillMount() { }
 
-  componentDidMount () { } 
+  componentDidMount() { }
 
-  componentWillUnmount () { }
+  componentWillUnmount() { }
 
-  componentDidShow () { }
+  componentDidShow() { }
 
-  componentDidHide () { }
+  componentDidHide() { }
 
   /**
    * 指定config的类型声明为: Taro.Config
@@ -25,10 +26,11 @@ export default class Index extends Component {
     navigationBarTitleText: '比克优选'
   }
 
-  render () {
+  render() {
     return (
       <View className='index'>
         <HeaderSearch />
+        <TabBar></TabBar>
       </View>
     )
   }

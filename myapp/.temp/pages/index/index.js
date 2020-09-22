@@ -3,6 +3,7 @@ import Taro from "@tarojs/taro-h5";
 import { View } from '@tarojs/components';
 import './index.css';
 import HeaderSearch from "../../Component/HeaderSearch/index";
+import TabBar from "../../Component/Tabar/index";
 export default class Index extends Taro.Component {
   constructor() {
     super(...arguments);
@@ -21,11 +22,8 @@ export default class Index extends Taro.Component {
   componentDidHide() {}
   render() {
     return <View className="index">
-<<<<<<< HEAD
-        <Text>Hello</Text>
-=======
         <HeaderSearch />
->>>>>>> develop
+        <TabBar></TabBar>
       </View>;
   }
   config = {

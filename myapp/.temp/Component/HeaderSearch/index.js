@@ -2,7 +2,12 @@ import Nerv from "nervjs";
 import Taro from "@tarojs/taro-h5";
 import { View, Image } from '@tarojs/components';
 import './index.css';
+// import Ajax from '../../../static/js/Axios'
 class HeadeSearch extends Taro.Component {
+  componentWillMount() {
+    //    const aaa=new Ajax()
+    //    console.log(aaa)
+  }
   constructor(props) {
     super(props);
     this.state = {
