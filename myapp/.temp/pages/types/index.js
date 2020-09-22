@@ -8,5 +8,18 @@ class Types extends Taro.Component {
                 这里是分类页面
             </View>;
   }
+
+  componentDidMount() {
+    super.componentDidMount && super.componentDidMount();
+  }
+
+  componentDidShow() {
+    super.componentDidShow && super.componentDidShow();
+  }
+
+  componentDidHide() {
+    super.componentDidHide && super.componentDidHide();
+  }
+
 }
 export default Types;

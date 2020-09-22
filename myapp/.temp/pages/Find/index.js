@@ -8,5 +8,18 @@ class Find extends Taro.Component {
                 这里是发现页面
             </View>;
   }
+
+  componentDidMount() {
+    super.componentDidMount && super.componentDidMount();
+  }
+
+  componentDidShow() {
+    super.componentDidShow && super.componentDidShow();
+  }
+
+  componentDidHide() {
+    super.componentDidHide && super.componentDidHide();
+  }
+
 }
 export default Find;

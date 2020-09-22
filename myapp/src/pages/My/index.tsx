@@ -1,14 +1,14 @@
 import Taro,{Component} from '@tarojs/taro'
 import {View} from '@tarojs/components'
 import './index.css'
-class ShoppingCart extends Component{
+class My extends Component{
     render(){
         return (
             <View>
-                这里是购物车
+                这里是我的页面
             </View>
         )
     }
 }
 
-export default ShoppingCart
+export default My

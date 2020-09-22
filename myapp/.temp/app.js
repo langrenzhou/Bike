@@ -58,10 +58,26 @@ class App extends Component {
       path: '/pages/details/details',
       componentLoader: () => import( /* webpackChunkName: "details_details" */'./pages/details/details'),
       isIndex: false
+    }, {
+      path: '/pages/types/index',
+      componentLoader: () => import( /* webpackChunkName: "types_index" */'./pages/types/index'),
+      isIndex: false
+    }, {
+      path: '/pages/ShoppingCart/index',
+      componentLoader: () => import( /* webpackChunkName: "ShoppingCart_index" */'./pages/ShoppingCart/index'),
+      isIndex: false
+    }, {
+      path: '/pages/Find/index',
+      componentLoader: () => import( /* webpackChunkName: "Find_index" */'./pages/Find/index'),
+      isIndex: false
+    }, {
+      path: '/pages/My/index',
+      componentLoader: () => import( /* webpackChunkName: "My_index" */'./pages/My/index'),
+      isIndex: false
     }]} customRoutes={{}} />;
   }
   config = {
-    pages: ["/pages/index/index", "/pages/details/details"],
+    pages: ["/pages/index/index", "/pages/details/details", '/pages/types/index', "/pages/ShoppingCart/index", "/pages/Find/index", "/pages/My/index"],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',

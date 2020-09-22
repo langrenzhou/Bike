@@ -33,17 +33,17 @@ class TarBar extends Component{
     BarClick(e){
         let url=''
         if(e == 0){
-            url=  ''
+            url=  '/pages/index/index'
         }else if(e == 1){
-           url=''
+           url='/pages/Types/index'
         }else if(e == 2){
-          url=''
+          url='/pages/Find/index'
         }else if(e == 3){
-          url=''
+          url='/pages/ShoppongCart/index'
         }else if(e == 4){
-            url=''
+            url='/pages/My/index'
         }
-        Taro.navigateTo({ url: '/pages/thread_detail/thread_detail' })
+        Taro.navigateTo({url})
     }
 }
 export default TarBar

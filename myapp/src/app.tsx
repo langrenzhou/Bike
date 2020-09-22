@@ -29,7 +29,11 @@ class App extends Component {
   config: Config = {
     pages: [ 
       'pages/index/index',
-      'pages/details/details'
+      'pages/details/details',
+      '/pages/types/index',
+      'pages/ShoppingCart/index',
+      'pages/Find/index',
+      'pages/My/index'
     ],
     window: {
       backgroundTextStyle: 'light',
