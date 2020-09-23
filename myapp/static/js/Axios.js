@@ -1,12 +1,21 @@
-// import Axios from 'axios'
-// class Ajax {
-//      constructor(){
-//          this.url='https://127.0.0.1/banner'
-//      }
-//      Axios_request(){
-//          Axios('').then(res=>{
-//              return res
-//          })
-//      }
-// }
-// export default Ajax
+import Axios from 'axios'
+class Ajax {
+     constructor(){
+         
+     }
+     Axios_request(data,method='GET'){
+         return new Promise((reslove,reject)=>{
+            Axios({
+                data,
+                url:'https://cnodejs.org/api/v1/topics',
+                method,
+   
+            }).then(res=>{
+            
+               reslove(res)
+            })
+         })
+         
+     }
+}
+export default Ajax

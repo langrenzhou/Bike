@@ -8,6 +8,7 @@ import "../static/js/zyl";
 //   require('nerv-devtools')
 // }
 import Nerv from 'nervjs';
+import { View, Tabbar, TabbarContainer, TabbarPanel } from '@tarojs/components';
 import { Router, createHistory, mountApis } from '@tarojs/router';
 Taro.initPxTransform({
   "designWidth": 750,
@@ -30,6 +31,44 @@ mountApis({
   "customRoutes": {}
 }, _taroHistory);
 class App extends Component {
+  state = {
+    __tabs: {
+      list: [{
+        // 'iconPath': 'resource/latest.png',
+        // 'selectedIconPath': 'resource/lastest_on.png',
+        pagePath: "/pages/index/index",
+        text: '首页'
+      }, {
+        // 'iconPath': 'resource/hotest.png', 
+        // 'selectedIconPath': 'resource/hotest_on.png',
+        pagePath: "/pages/Types/index",
+        text: '分类'
+      }, {
+        // 'iconPath': 'resource/node.png',
+        //////'selectedIconPath': 'resource/node_on.png',
+        pagePath: "/pages/Find/index",
+        text: '发现'
+      }, {
+        // 'iconPath': 'resource/node.png',
+        //////'selectedIconPath': 'resource/node_on.png',
+        pagePath: "/pages/ShoppingCart/index",
+        text: '购物车'
+      }, {
+        // 'iconPath': 'resource/node.png',
+        //////'selectedIconPath': 'resource/node_on.png',
+        pagePath: "/pages/My/index",
+        text: '我的'
+      }],
+      'color': '#000',
+      'selectedColor': '#56abe4',
+      'backgroundColor': '#fff',
+      'borderStyle': 'white',
+      mode: "hash",
+      basename: "/",
+      customRoutes: {}
+    }
+  };
+
   constructor() {
     super(...arguments);
     /**
@@ -50,34 +89,46 @@ class App extends Component {
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
   render() {
-    return <Router mode={"hash"} history={_taroHistory} routes={[{
-      path: '/pages/index/index',
-      componentLoader: () => import( /* webpackChunkName: "index_index" */'./pages/index/index'),
-      isIndex: true
-    }, {
-      path: '/pages/details/details',
-      componentLoader: () => import( /* webpackChunkName: "details_details" */'./pages/details/details'),
-      isIndex: false
-    }, {
-      path: '/pages/types/index',
-      componentLoader: () => import( /* webpackChunkName: "types_index" */'./pages/types/index'),
-      isIndex: false
-    }, {
-      path: '/pages/ShoppingCart/index',
-      componentLoader: () => import( /* webpackChunkName: "ShoppingCart_index" */'./pages/ShoppingCart/index'),
-      isIndex: false
-    }, {
-      path: '/pages/Find/index',
-      componentLoader: () => import( /* webpackChunkName: "Find_index" */'./pages/Find/index'),
-      isIndex: false
-    }, {
-      path: '/pages/My/index',
-      componentLoader: () => import( /* webpackChunkName: "My_index" */'./pages/My/index'),
-      isIndex: false
-    }]} customRoutes={{}} />;
+    return <TabbarContainer>
+          
+        <TabbarPanel>
+          
+                <Router mode={"hash"} history={_taroHistory} routes={[{
+          path: '/pages/index/index',
+          componentLoader: () => import( /* webpackChunkName: "index_index" */'./pages/index/index'),
+          isIndex: true
+        }, {
+          path: '/pages/details/details',
+          componentLoader: () => import( /* webpackChunkName: "details_details" */'./pages/details/details'),
+          isIndex: false
+        }, {
+          path: '/pages/Types/index',
+          componentLoader: () => import( /* webpackChunkName: "Types_index" */'./pages/Types/index'),
+          isIndex: false
+        }, {
+          path: '/pages/ShoppingCart/index',
+          componentLoader: () => import( /* webpackChunkName: "ShoppingCart_index" */'./pages/ShoppingCart/index'),
+          isIndex: false
+        }, {
+          path: '/pages/Find/index',
+          componentLoader: () => import( /* webpackChunkName: "Find_index" */'./pages/Find/index'),
+          isIndex: false
+        }, {
+          path: '/pages/My/index',
+          componentLoader: () => import( /* webpackChunkName: "My_index" */'./pages/My/index'),
+          isIndex: false
+        }]} tabBar={this.state.__tabs} customRoutes={{}} />
+                
+        </TabbarPanel>
+        <Tabbar conf={this.state.__tabs} homePage="pages/index/index" />
+        </TabbarContainer>;
   }
   config = {
-    pages: ["/pages/index/index", "/pages/details/details", '/pages/types/index', "/pages/ShoppingCart/index", "/pages/Find/index", "/pages/My/index"],
+    tabBar: { list: [{ pagePath: "/pages/index/index", text: '首页' }, { pagePath: "/pages/Types/index", text: '分类' }, { pagePath: "/pages/Find/index", text: '发现' }, { pagePath: "/pages/ShoppingCart/index", text: '购物车' }, { pagePath: "/pages/My/index", text: '我的' }], 'color': '#000', 'selectedColor': '#56abe4', 'backgroundColor': '#fff', 'borderStyle': 'white', mode: "hash",
+      basename: "/",
+      customRoutes: {}
+    },
+    pages: ["/pages/index/index", "/pages/details/details", "/pages/Types/index", "/pages/ShoppingCart/index", "/pages/Find/index", "/pages/My/index"],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
@@ -88,6 +139,10 @@ class App extends Component {
 
   componentWillUnmount() {
     this.componentDidHide();
+  }
+
+  componentWillMount() {
+    Taro.initTabBarApis(this, Taro);
   }
 
 }

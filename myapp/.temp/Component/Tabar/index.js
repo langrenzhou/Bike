@@ -26,7 +26,7 @@ class TarBar extends Taro.Component {
     } else if (e == 2) {
       url = '/pages/Find/index';
     } else if (e == 3) {
-      url = '/pages/ShoppongCart/index';
+      url = '/pages/ShoppingCart/index';
     } else if (e == 4) {
       url = '/pages/My/index';
     }

@@ -27,10 +27,45 @@ class App extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
+    tabBar: {
+      list: [{
+        // 'iconPath': 'resource/latest.png',
+        // 'selectedIconPath': 'resource/lastest_on.png',
+        pagePath: 'pages/index/index',
+        text: '首页'
+      }, {
+        // 'iconPath': 'resource/hotest.png', 
+        // 'selectedIconPath': 'resource/hotest_on.png',
+        pagePath: 'pages/Types/index',
+        text: '分类'
+      }, {
+        // 'iconPath': 'resource/node.png',
+        //////'selectedIconPath': 'resource/node_on.png',
+        pagePath: 'pages/Find/index',
+        text: '发现'
+      },
+      {
+        // 'iconPath': 'resource/node.png',
+        //////'selectedIconPath': 'resource/node_on.png',
+        pagePath: 'pages/ShoppingCart/index',
+        text: '购物车'
+      },
+      {
+        // 'iconPath': 'resource/node.png',
+        //////'selectedIconPath': 'resource/node_on.png',
+        pagePath: 'pages/My/index',
+        text: '我的'
+      }
+    ],
+      'color': '#000',
+      'selectedColor': '#56abe4',
+      'backgroundColor': '#fff',
+      'borderStyle': 'white'
+    },
     pages: [ 
       'pages/index/index',
       'pages/details/details',
-      '/pages/types/index',
+      'pages/Types/index',
       'pages/ShoppingCart/index',
       'pages/Find/index',
       'pages/My/index'
