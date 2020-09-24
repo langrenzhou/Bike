@@ -2,19 +2,16 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.css'
 import HeaderSearch from '../../Component/HeaderSearch'
-import Ajax from '../../../static/js/Axios'
 export default class Index extends Component {
 
   componentWillMount() { 
-    console.log(new Ajax().Axios_request({}).then(res=>{
-      console.log(res)
-    }))
+   
   }
 
   componentDidMount() { }
 
   componentWillUnmount() { }
-
+j
   componentDidShow() { }
 
   componentDidHide() { }
@@ -34,7 +31,6 @@ export default class Index extends Component {
     return (
       <View className='index'>
         <HeaderSearch />
-        {/* <TabBar></TabBar> */}
       </View>
     )
   }

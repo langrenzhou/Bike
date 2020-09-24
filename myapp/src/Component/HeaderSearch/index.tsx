@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Input, Image } from '@tarojs/components'
 import './index.css'
+import store from '../../store'
 // import Ajax from '../../../static/js/Axios'
 class HeadeSearch extends Component {
     componentWillMount(){
@@ -11,8 +12,9 @@ class HeadeSearch extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            Login: false
+        
         }
+        this.store=store.getState()
     }
  
     render() {   
@@ -25,6 +27,8 @@ class HeadeSearch extends Component {
                             src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAgAgMAAAAdw9KTAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURUdwTP///////////waf0AoAAAADdFJOUwDjSYAlncUAAAAbSURBVBjTY5j/Hwq+MdTDmH+RmUgK6AuGhcsAU5tyB6Ji+x0AAAAASUVORK5CYII'></Image>
                     </View>
                     <View className='left'>
+
+
                         {/* <Input placeholder='请输入商品'></Input> */}
                     </View>
                     <View className='right'
@@ -44,13 +48,14 @@ class HeadeSearch extends Component {
         )
     }
     Login(e){
-        //暂时只是本地数据，没有应用到redux，需要应用到Redux
-      if(this.state.Login){
-          //跳转到我的页面
+        let url=''
+      if(this.store.Login){
+          url='/pages/My/index'
       }else{
-          //跳转到登录注册页面
-
+        url='/pages/Logins/Logins'
+       
       }
+      Taro.navigateTo({url})
     }
 }
 export default HeadeSearch

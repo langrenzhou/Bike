@@ -2,6 +2,7 @@ import Nerv from "nervjs";
 import Taro from "@tarojs/taro-h5";
 import { View, Image } from '@tarojs/components';
 import './index.css';
+import store from "../../store/index";
 // import Ajax from '../../../static/js/Axios'
 class HeadeSearch extends Taro.Component {
   componentWillMount() {
@@ -10,9 +11,8 @@ class HeadeSearch extends Taro.Component {
   }
   constructor(props) {
     super(props);
-    this.state = {
-      Login: false
-    };
+    this.state = {};
+    this.store = store.getState();
   }
   render() {
     return <View className="big">
@@ -21,6 +21,8 @@ class HeadeSearch extends Taro.Component {
                         <Image style="width:.2rem;height:.2rem;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAgAgMAAAAdw9KTAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURUdwTP///////////waf0AoAAAADdFJOUwDjSYAlncUAAAAbSURBVBjTY5j/Hwq+MdTDmH+RmUgK6AuGhcsAU5tyB6Ji+x0AAAAASUVORK5CYII"></Image>
                     </View>
                     <View className="left">
+
+
                         
                     </View>
                     <View className="right" onClick={this.Login.bind(this)} style={this.state.Login ? 'font-size:0' : 'font-size:0.2rem'}>
@@ -32,10 +34,13 @@ class HeadeSearch extends Taro.Component {
             </View>;
   }
   Login(e) {
-    //暂时只是本地数据，没有应用到redux，需要应用到Redux
-    if (this.state.Login) {
-      //跳转到我的页面
+    let url = '';
+    if (this.store.Login) {
+      url = '/pages/My/index';
+    } else {
+      url = '/pages/Logins/Logins';
     }
+    Taro.navigateTo({ url });
   }
 }
 export default HeadeSearch;
