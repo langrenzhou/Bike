@@ -18,4 +18,17 @@ class Ajax {
          
      }
 }
+// function Ajax(data,method='GET',index){
+// const urlsArr=['接口地址1','接口地址2']
+//     return new Promise((reslove,reject)=>{
+//                     Axios({
+//                         data,
+//                         url:urlsArr[index],
+//                         method,
+           
+//                     }).then(res=>{
+//                        reslove(res)
+//                     })
+//                  })
+// }
 export default Ajax

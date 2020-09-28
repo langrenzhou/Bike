@@ -7,6 +7,12 @@ import './index.css';
 class Logins extends Taro.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      userName: '',
+      password: '',
+      InputButton: false
+    };
   }
   render() {
     return <View>
@@ -16,22 +22,30 @@ class Logins extends Taro.Component {
                     </View>
                     <View className="title">比克优选登录注册</View>
                 </View>
+            
                 <View>
                     <View className="PhoneInput">
-                        <AtInput type="phone" placeholder="请输入手机号码" />
+                        <AtInput onChange={this.ChangeInput.bind(this, 'Phone')} style="padding:0;" type="phone" placeholder="请输入手机号码" />
                     </View>
                     <View className="CodeInput">
-                        <AtInput clear type="number" placeholder="请输入收到的验证码" maxLength="6">
+                        <AtInput onChange={this.ChangeInput.bind(this, 'Code')} style="padding:0;" clear type="number" placeholder="请输入收到的验证码" maxLength="6">
                             <View style="border-left:.01rem solid #ccc;">获取验证码</View>
                         </AtInput>
                     </View>
-                    <View></View>
+                    <View className={['Button', this.state.InputButton ? 'Two' : 'One']}>登录</View>
                 </View>
             </View>;
   }
   edit() {
     Taro.navigateBack();
   }
+  ChangeInput(e, type) {
+    console.log(e);
+    console.log(type);
+  }
+  config = {
+    navigationBarTitleText: '比克优选登录注册'
+  };
 
   componentDidMount() {
     super.componentDidMount && super.componentDidMount();

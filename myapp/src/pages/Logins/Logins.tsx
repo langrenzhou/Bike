@@ -1,4 +1,4 @@
-import Taro, { Component } from '@tarojs/taro'
+import Taro, { Component, Config } from '@tarojs/taro'
 import { AtInput } from 'taro-ui'
 import "taro-ui/dist/style/components/input.scss";
 import { View, Image, Text, Input } from '@tarojs/components'
@@ -6,7 +6,15 @@ import './index.css'
 class Logins extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            userName:'',
+            password:'',
+            InputButton:false
+        }
 
+    }
+    config: Config = {
+        navigationBarTitleText: '比克优选登录注册'
     }
     render() {
         return (
@@ -21,9 +29,12 @@ class Logins extends Component {
                     </View>
                     <View className='title'>比克优选登录注册</View>
                 </View>
+            
                 <View>
                     <View className='PhoneInput'>
                         <AtInput
+                        onChange={this.ChangeInput.bind(this,'Phone')}
+                            style='padding:0;'
                             type='phone'
                             placeholder='请输入手机号码'
                         // value={this.state.value6}
@@ -32,6 +43,8 @@ class Logins extends Component {
                     </View>
                     <View className='CodeInput'>
                         <AtInput
+                           onChange={this.ChangeInput.bind(this,'Code')}
+                            style='padding:0;'
                             clear
                             type='number'
                             placeholder='请输入收到的验证码'
@@ -42,13 +55,17 @@ class Logins extends Component {
                             <View style='border-left:.01rem solid #ccc;'>获取验证码</View>
                         </AtInput>
                     </View>
-                    <View></View>
+                    <View className={['Button', this.state.InputButton ? 'Two':'One']}>登录</View>
                 </View>
             </View>
         )
     }
     edit() {
         Taro.navigateBack()
+    }
+    ChangeInput(e,type){
+          console.log(e)
+          console.log(type)
     }
 }
 export default Logins
