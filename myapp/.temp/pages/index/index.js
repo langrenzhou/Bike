@@ -3,7 +3,6 @@ import Taro from "@tarojs/taro-h5";
 import { View } from '@tarojs/components';
 import './index.css';
 import HeaderSearch from "../../Component/HeaderSearch/index";
-import Ajax from '../../../static/js/Axios';
 export default class Index extends Taro.Component {
   constructor() {
     super(...arguments);
@@ -15,11 +14,7 @@ export default class Index extends Taro.Component {
      * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
      */
   }
-  componentWillMount() {
-    Ajax().then(res => {
-      console.log(res);
-    });
-  }
+  componentWillMount() {}
   componentDidMount() {}
   componentWillUnmount() {}
   componentDidShow() {}

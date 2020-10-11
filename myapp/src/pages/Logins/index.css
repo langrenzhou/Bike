@@ -20,8 +20,8 @@
   margin-top: .2rem;
   font-size: 0.17rem;
 }
-.PhoneInput>.at-input{
-    padding:none;
+.at-input{
+    padding:0;
 }
 .CodeInput{
     width: 92%;margin: 0 auto;
@@ -54,4 +54,22 @@
 }
 .Two{
     background-image: -webkit-linear-gradient(left,#f10000,#ff2000 73%,#ff4f18);
+}
+.LoginsType{
+    width: 92%;
+    display: flex;
+    font-size: 0.16rem;
+    line-height: .6rem;
+    color: #ccc;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+.at-modal__container>.at-modal__content{
+    font-size:0.16rem;
+}
+.none{
+    display:none;
+}
+.block{
+    display:block;
 }

@@ -3,16 +3,16 @@ class Ajax {
      constructor(){
          
      }
-     Axios_request(data,method='GET'){
+     Axios_request(url,data,method='GET'){
          return new Promise((reslove,reject)=>{
             Axios({
                 data,
-                url:'https://cnodejs.org/api/v1/topics',
-                method,
-   
-            }).then(res=>{
-            
+                url:'http://127.0.0.1:8081'+url,
+                method
+            }).then(res=>{  
                reslove(res)
+            }).catch(()=>{
+                reject()
             })
          })
          
@@ -31,4 +31,4 @@ class Ajax {
 //                     })
 //                  })
 // }
-export default Ajax
+export default new Ajax()

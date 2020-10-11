@@ -2,13 +2,10 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.css'
 import HeaderSearch from '../../Component/HeaderSearch'
-import Ajax from '../../../static/js/Axios'
 export default class Index extends Component {
 
   componentWillMount() { 
-   Ajax().then(res=>{
-     console.log(res)
-   })
+  
   }
 
   componentDidMount() { }
