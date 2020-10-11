@@ -5,7 +5,7 @@ import { View, Image, Text, Input, Button } from '@tarojs/components'
 import './index.css'
 import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from "taro-ui"
 import "taro-ui/dist/style/components/modal.scss";
-import  Ajax from  '../../../static/js/Axios'
+import Ajax from '../../../static/js/Axios'
 import { AtMessage } from 'taro-ui'
 import "taro-ui/dist/style/components/message.scss";
 class Logins extends Component {
@@ -18,7 +18,7 @@ class Logins extends Component {
             Pwd: false,
             isOpened: false,
             registered: false,
-            Password:''
+            Password: ''
         }
 
     }
@@ -28,7 +28,7 @@ class Logins extends Component {
     render() {
         return (
             <View>
-        <AtMessage />
+                <AtMessage />
                 <AtModal
                     isOpened={this.state.isOpened}
                 >
@@ -61,12 +61,12 @@ class Logins extends Component {
                             value={this.state.Phone}
                         />
                     </View>
-                    <View   className={['PhoneInput',this.state.registered?'bloc':'none']}>
+                    <View className={['PhoneInput', this.state.registered ? 'block' : 'none']}>
                         <AtInput
                             onChange={this.ChangeInput.bind(this, 'Password')}
                             type='password'
                             placeholder={"请输入密码"}
-                            value={this.state.Password} 
+                            value={this.state.Password}
                         />
                     </View>
                     <View className='CodeInput'>
@@ -83,10 +83,10 @@ class Logins extends Component {
                             <View style='border-left:.01rem solid #ccc;color:' onClick={this.ObtainCode.bind(this)}>{this.state.Pwd ? "忘记密码" : "获取验证码"}</View>
                         </AtInput>
                     </View>
-                    <View className={['Button',this.Pwd ? this.state.Code != '' && this.state.Phone != '' ? 'Two' : 'One':this.state.Code != '' && this.state.Phone != '' && this.state.Password ? 'Two' : 'One']}  onClick={this.Lregister.bind(this)}>{this.state.registered ? '注册' : '登录'}</View>
+                    <View className={['Button', this.Pwd ? this.state.Code != '' && this.state.Phone != '' ? 'Two' : 'One' : this.state.registered ? this.state.Code != '' && this.state.Phone != '' && this.state.Password != '' ? 'Two' : 'One' : this.state.Code != '' && this.state.Phone != '' ? 'Two' : 'One']} onClick={this.Lregister.bind(this)}>{this.state.registered ? '注册' : '登录'}</View>
                     <View className='LoginsType'>
-                        <View onClick={() => { this.setState({ Pwd: !this.state.Pwd, Code: '', Phone: '' }) }}>{this.state.Pwd ? '手机验证码登录' : '账号密码登录'}</View>
-                        <View onClick={() => { this.setState({ isOpened: !this.state.isOpened,Code:'',Phone:'' }) }}>手机快速注册</View>
+                        <View onClick={() => { this.setState({ Pwd: !this.state.Pwd, Code: '', Phone: '', registered: false }) }}>{this.state.Pwd ? '手机验证码登录' : '账号密码登录'}</View>
+                        <View onClick={() => { this.setState({ isOpened: !this.state.isOpened, Code: '', Phone: '' }) }}>手机快速注册</View>
                     </View>
                 </View>
             </View>
@@ -97,41 +97,64 @@ class Logins extends Component {
             [e]: type
         })
     }
-    ObtainCode(){
-     console.log('获取验证码操作还在建设中')
-   }
-   Lregister(){
-     const {registered,Code,Phone,Password} =this.state
-     console.log(registered)
-     if(Code == '' || Phone == ''){
-         
-     }else if(registered){
-        if(Password !=''){
-            Ajax.Axios_request('/register?Name='+Phone+'&Password='+Password,{}).then(res=>{
-                console.log(res)
-            })
-        }else{
-          
-            Taro.atMessage({
-                'message': '请输入密码',
-                'type': 'error',
-              })
-        }
-     }else{
-        Ajax.Axios_Get('/Logins',{}).then(res=>{
-            if(res.data == '已被注册'){
+    ObtainCode() {
+        console.log('获取验证码操作还在建设中')
+    }
+    Lregister() {
+        const { registered, Code, Phone, Password } = this.state
+        if (Code == '' || Phone == '') {
+
+        } else if (registered) {
+            console.log('这里是注册')
+            if (Password != '') {
+                Ajax.Axios_request('/register?Name=' + Phone + '&Password=' + Password, {}).then(res => {
+                    if (res.data == '已被注册') {
+                        Taro.atMessage({
+                            'message': '该账号已被注册',
+                            'type': 'error',
+                        })
+                    } else {
+                        Taro.atMessage({
+                            'message': '注册成功，请进行登录',
+                            'type': 'success',
+                        })
+                        this.setState({
+                            registered:false
+                        })
+                    }
+                })
+            } else {
+
                 Taro.atMessage({
-                    'message': '该账号已被注册',
+                    'message': '请输入密码',
                     'type': 'error',
-                  })
-            }else{
-                Taro.atMessage({
-                    'message': '注册成功，请进行登录',
-                    'type': 'success',
-                  })
+                })
             }
-        })
-     }
-   }
+        } else {
+            Ajax.Axios_request(`/Logins?Name=${Phone}&Password=${Code}`, {}).then(res => {
+                console.log(res)
+                if(res.data[0].Name){
+                    Taro.atMessage({
+                        'message': '登录成功',
+                        'type': 'success',
+                        duration:2000
+                    })
+                    setTimeout(()=>{
+                        Taro.navigateBack()
+                    },2000)
+                }else if(res == '错误'){
+                    Taro.atMessage({
+                        'message': '账号或者密码错误',
+                        'type': 'error',
+                    })
+                }else{
+                    Taro.atMessage({
+                        'message': '该账号没有注册',
+                        'type': 'error',
+                    })  
+                }
+            })
+        }
+    }
 }
 export default Logins

@@ -1,4 +1,3 @@
-
 const  MysqlQuery=function(check,link){
         return new Promise((reslove,reject)=>{
             link.query(check,function(err,result){
