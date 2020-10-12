@@ -8,6 +8,8 @@ import "taro-ui/dist/style/components/modal.scss";
 import Ajax from '../../../static/js/Axios'
 import { AtMessage } from 'taro-ui'
 import "taro-ui/dist/style/components/message.scss";
+import store from '../../store/index'
+import { UserInfoLogin,UserLogin } from '../../store/action'
 class Logins extends Component {
     constructor(props) {
         super(props)
@@ -18,12 +20,16 @@ class Logins extends Component {
             Pwd: false,
             isOpened: false,
             registered: false,
-            Password: ''
+            Password: '',
+            storeSate:store.getState()
         }
-
+        store.subscribe(this.changeState.bind(this))
     }
     config: Config = {
         navigationBarTitleText: '比克优选登录注册'
+    }
+    changeState() {
+        this.setState({store:store.getState()})
     }
     render() {
         return (
@@ -119,7 +125,7 @@ class Logins extends Component {
                             'type': 'success',
                         })
                         this.setState({
-                            registered:false
+                            registered: false
                         })
                     }
                 })
@@ -132,26 +138,36 @@ class Logins extends Component {
             }
         } else {
             Ajax.Axios_request(`/Logins?Name=${Phone}&Password=${Code}`, {}).then(res => {
-                console.log(res)
-                if(res.data[0].Name){
+                const { Name, Img } = res.data[0]
+                const date = new Date()
+                if (Name) {
                     Taro.atMessage({
                         'message': '登录成功',
                         'type': 'success',
-                        duration:2000
+                        duration: 2000
                     })
-                    setTimeout(()=>{
+                    const UserLoginInfoaction = UserInfoLogin(res.data[0])
+                    store.dispatch(UserLoginInfoaction)
+                    const UserLoginaction = UserLogin(true)
+                    store.dispatch(UserLoginaction)
+                    const expires = new Date(Number(date.getTime()) + (1000 * 60 * 60 * 24 * 3)).toGMTString()
+                    document.cookie = `userName=${Name};expires=${expires}`
+                    document.cookie = `userImg=${Img};expires=${expires}`
+
+                    setTimeout(() => {
+
                         Taro.navigateBack()
-                    },2000)
-                }else if(res == '错误'){
+                    }, 2000)
+                } else if (res == '错误') {
                     Taro.atMessage({
                         'message': '账号或者密码错误',
                         'type': 'error',
                     })
-                }else{
+                } else {
                     Taro.atMessage({
                         'message': '该账号没有注册',
                         'type': 'error',
-                    })  
+                    })
                 }
             })
         }

@@ -9,6 +9,8 @@ import "taro-ui/dist/style/components/modal.scss";
 import Ajax from '../../../static/js/Axios';
 import { AtMessage } from 'taro-ui';
 import "taro-ui/dist/style/components/message.scss";
+import store from '../../store/index';
+import { UserInfoLogin, UserLogin } from '../../store/action';
 class Logins extends Taro.Component {
   constructor(props) {
     super(props);
@@ -20,8 +22,13 @@ class Logins extends Taro.Component {
       Pwd: false,
       isOpened: false,
       registered: false,
-      Password: ''
+      Password: '',
+      storeSate: store.getState()
     };
+    store.subscribe(this.changeState.bind(this));
+  }
+  changeState() {
+    this.setState({ store: store.getState() });
   }
   render() {
     return <View>
@@ -109,13 +116,21 @@ class Logins extends Taro.Component {
       }
     } else {
       Ajax.Axios_request(`/Logins?Name=${Phone}&Password=${Code}`, {}).then(res => {
-        console.log(res);
-        if (res.data[0].Name) {
+        const { Name, Img } = res.data[0];
+        const date = new Date();
+        if (Name) {
           Taro.atMessage({
             'message': '登录成功',
             'type': 'success',
             duration: 2000
           });
+          const UserLoginInfoaction = UserInfoLogin(res.data[0]);
+          store.dispatch(UserLoginInfoaction);
+          const UserLoginaction = UserLogin(true);
+          store.dispatch(UserLoginaction);
+          const expires = new Date(Number(date.getTime()) + 259200000).toGMTString();
+          document.cookie = `userName=${Name};expires=${expires}`;
+          document.cookie = `userImg=${Img};expires=${expires}`;
           setTimeout(() => {
             Taro.navigateBack();
           }, 2000);

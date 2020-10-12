@@ -2,10 +2,14 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.css'
 import HeaderSearch from '../../Component/HeaderSearch'
+import store from '../../store/index'
 export default class Index extends Component {
+  constructor(){
+    super()
+  }
 
   componentWillMount() { 
-  
+   
   }
 
   componentDidMount() { }
@@ -28,6 +32,7 @@ j
   }
 
   render() {
+    console.log(store.getState())
     return (
       <View className='index'>
         <HeaderSearch />

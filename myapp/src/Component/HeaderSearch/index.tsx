@@ -1,8 +1,8 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Input, Image } from '@tarojs/components'
 import './index.css'
-import store from '../../store'
 // import Ajax from '../../../static/js/Axios'
+import store from '../../store/index'
 class HeadeSearch extends Component {
     componentWillMount(){
     //    const aaa=new Ajax()
@@ -12,9 +12,9 @@ class HeadeSearch extends Component {
     constructor(props) {
         super(props)
         this.state = {
-        
+           store:{}
         }
-        this.store=store.getState()
+        this.state.store=store.getState()
     }
  
     render() {   
