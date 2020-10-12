@@ -4,6 +4,7 @@ class Ajax {
          
      }
      Axios_request(url,data,method='GET'){
+        
          return new Promise((reslove,reject)=>{
             Axios({
                 data,

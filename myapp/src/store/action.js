@@ -1,10 +1,22 @@
-import {UserInfoLogins,UserLogins} from './type'
-export const UserInfoLogin=(value)=>({
-    type:UserInfoLogin,
-    value
-})
+import {UserInfoLogins,UserLogins,UserCookieLogin} from './type'
+export const UserInfoLogin=(value)=>{
+  
+    return ({
+        type:UserInfoLogins,
+        value
+    })
+   
+}
 export const UserLogin=(value)=>({
-    type:UserLogin,
+    type:UserLogins,
     value
 })
+export const UserCookieLogins=(value)=>{
+    
+    return ({
+        type:UserCookieLogin,
+        value
+    })
+   
+}
     

@@ -4,6 +4,7 @@ import { View } from '@tarojs/components';
 import './index.css';
 import HeaderSearch from "../../Component/HeaderSearch/index";
 import store from '../../store/index';
+import Swipers from "../../Component/swiper/index";
 export default class Index extends Taro.Component {
   constructor() {
     super();
@@ -24,6 +25,7 @@ export default class Index extends Taro.Component {
     console.log(store.getState());
     return <View className="index">
         <HeaderSearch />
+        <Swipers />
       </View>;
   }
   config = {

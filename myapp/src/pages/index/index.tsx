@@ -3,6 +3,7 @@ import { View, Text } from '@tarojs/components'
 import './index.css'
 import HeaderSearch from '../../Component/HeaderSearch'
 import store from '../../store/index'
+import Swipers from '../../Component/swiper'
 export default class Index extends Component {
   constructor(){
     super()
@@ -36,6 +37,7 @@ j
     return (
       <View className='index'>
         <HeaderSearch />
+        <Swipers />
       </View>
     )
   }

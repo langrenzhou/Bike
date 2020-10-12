@@ -132,8 +132,9 @@ class Logins extends Taro.Component {
           document.cookie = `userName=${Name};expires=${expires}`;
           document.cookie = `userImg=${Img};expires=${expires}`;
           setTimeout(() => {
+            console.log(store.getState());
             Taro.navigateBack();
-          }, 2000);
+          }, 1000);
         } else if (res == '错误') {
           Taro.atMessage({
             'message': '账号或者密码错误',
