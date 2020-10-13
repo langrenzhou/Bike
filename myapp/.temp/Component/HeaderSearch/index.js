@@ -32,7 +32,9 @@ class HeadeSearch extends Taro.Component {
   render() {
     return <View className="big">
                 <View className="area">
-                    <View className="Type">
+                    <View className="Type" onClick={() => {
+          _switchTab({ url: "/pages/Types/index" });
+        }}>
                         <Image style="width:.2rem;height:.2rem;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAgAgMAAAAdw9KTAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURUdwTP///////////waf0AoAAAADdFJOUwDjSYAlncUAAAAbSURBVBjTY5j/Hwq+MdTDmH+RmUgK6AuGhcsAU5tyB6Ji+x0AAAAASUVORK5CYII"></Image>
                     </View>
                     <View className="left">

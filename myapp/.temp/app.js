@@ -121,6 +121,10 @@ class App extends Component {
           path: '/pages/Logins/Logins',
           componentLoader: () => import( /* webpackChunkName: "Logins_Logins" */'./pages/Logins/Logins'),
           isIndex: false
+        }, {
+          path: '/pages/Commodity',
+          componentLoader: () => import( /* webpackChunkName: "Commodity" */'./pages/Commodity'),
+          isIndex: false
         }]} tabBar={this.state.__tabs} customRoutes={{}} />
                 
         </TabbarPanel>
@@ -132,7 +136,7 @@ class App extends Component {
       basename: "/",
       customRoutes: {}
     },
-    pages: ["/pages/index/index", "/pages/details/details", "/pages/Types/index", "/pages/ShoppingCart/index", "/pages/Find/index", "/pages/My/index", "/pages/Logins/Logins"],
+    pages: ["/pages/index/index", "/pages/details/details", "/pages/Types/index", "/pages/ShoppingCart/index", "/pages/Find/index", "/pages/My/index", "/pages/Logins/Logins", "/pages/Commodity"],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
