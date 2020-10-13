@@ -24,7 +24,7 @@ class Swipers extends Taro.Component {
                 <View className="SwiperBack">
                     {this.state.ImgUrlArr.length > 0 ? <Swiper className="test-h" indicatorColor="#fff" indicatorActiveColor="#ec4b6a" interval="1000" circular={this.state.ImgUrlArr.length > 0 ? true : false} indicatorDots autoplay className="Swipers">
                             {this.state.ImgUrlArr.map(item => <SwiperItem key={item.id} className="SwiperItem">
-                                    <Image src={item.url} style="width:100%;height:100%;"></Image>
+                                    <Image src={item.url} style="width:100%;height:100%;border-radius:.2rem,overflow:hidden;"></Image>
                                 </SwiperItem>)}
                         </Swiper> : ''}
                 </View>

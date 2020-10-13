@@ -9,10 +9,10 @@
     height: 2.6rem;
 
 }
-.swiper-container{
+.Swipers> .swiper-container{
     height: 2.6rem;
     border-radius: .2rem;
-    overflow: hidden;
+    overflow: hidden !important ; 
 }
 .SwiperBack{
     height: 2.8em;

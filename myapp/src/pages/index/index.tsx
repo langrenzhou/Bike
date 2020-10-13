@@ -4,19 +4,20 @@ import './index.css'
 import HeaderSearch from '../../Component/HeaderSearch'
 import store from '../../store/index'
 import Swipers from '../../Component/swiper'
+import Channel from '../../Component/Channel'
 export default class Index extends Component {
-  constructor(){
+  constructor() {
     super()
   }
 
-  componentWillMount() { 
-   
+  componentWillMount() {
+
   }
 
   componentDidMount() { }
 
   componentWillUnmount() { }
-j
+  j
   componentDidShow() { }
 
   componentDidHide() { }
@@ -36,9 +37,11 @@ j
     console.log(store.getState())
     return (
       <View className='index'>
-        <HeaderSearch />
-        <Swipers />
-      </View>
+       
+          <HeaderSearch />
+          <Swipers />
+          <Channel />
+        </View>
     )
   }
 }

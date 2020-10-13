@@ -1,0 +1,20 @@
+.channelbig{
+    width: 92%;
+    margin: 0 auto;
+    font-size:0;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f6f6f6;
+    border-radius: .2rem;
+}
+.channelImgBig{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.channelImg{
+    width: .9rem;
+    height: .9rem;
+}

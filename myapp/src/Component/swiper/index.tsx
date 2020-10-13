@@ -36,7 +36,7 @@ class Swipers extends Component {
                             {this.state.ImgUrlArr.map(item => (
 
                                 <SwiperItem key={item.id} className='SwiperItem'>
-                                    <Image src={item.url} style='width:100%;height:100%;'></Image>
+                                    <Image src={item.url} style='width:100%;height:100%;border-radius:.2rem,overflow:hidden;'></Image>
                                 </SwiperItem>
 
                             ))}

@@ -5,6 +5,7 @@ import './index.css';
 import HeaderSearch from "../../Component/HeaderSearch/index";
 import store from '../../store/index';
 import Swipers from "../../Component/swiper/index";
+import Channel from "../../Component/Channel/index";
 export default class Index extends Taro.Component {
   constructor() {
     super();
@@ -24,9 +25,11 @@ export default class Index extends Taro.Component {
   render() {
     console.log(store.getState());
     return <View className="index">
-        <HeaderSearch />
-        <Swipers />
-      </View>;
+       
+          <HeaderSearch />
+          <Swipers />
+          <Channel />
+        </View>;
   }
   config = {
     navigationBarTitleText: '比克优选'
