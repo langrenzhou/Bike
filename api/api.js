@@ -91,15 +91,37 @@ app.all('/Logins',(req,res)=>{
 })
 // 获取首页轮播图路径的接口
 app.get('/banner',(req,res)=>{
-    res.header("Access-Control-Allow-Origin", "http://192.168.43.128:10086"); //设置允许跨域的域名，*代表允许任意域名跨域
-    res.header("Access-Control-Allow-Headers", "content-type"); //允许的header类型
-    res.header("Access-Control-Allow-Methods", "DELETE,PUT,POST,GET,OPTIONS");
+    res.header("Access-Control-Allow-Origin", "http://192.168.43.128:10086");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1')
+    res.header("Content-Type", "application/json;charset=utf-8");
     const check=`select * from banner limit 0,5`
     link.query(check,function(err,result){
         if(err){
             console.log(err)
         }else{
-            console.log(result)
+            res.send(result)
+            res.end(err)
+        }
+    })
+})
+// 商品列表页面的接口
+app.all('/commodity',(req,res)=>{
+   
+    res.header("Access-Control-Allow-Origin", "http://192.168.43.128:10086");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1')
+    res.header("Content-Type", "application/json;charset=utf-8");
+   
+    const {type} =req.query;
+    const check=`select * from commodity where type='${type}'`
+    link.query(check,function(err,result){
+        if(err){
+            console.log(err)
+        }else{
+            
             res.send(result)
             res.end(err)
         }

@@ -14,10 +14,6 @@ class Channel extends Component {
     render() {
 
         return (
-
-
-
-
     <View>
             <View className='channelbig'>
                 {
@@ -30,15 +26,11 @@ class Channel extends Component {
                             </View>
                             <View style='width:100%;line-height:.5rem;font-size:.16rem;text-align:center;color:#666'>{item.name}</View>
                         </View>
- 
                     ))
 
                 }
             </View>
             </View>
-
-
-
         )
     }
 }
