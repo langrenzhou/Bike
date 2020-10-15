@@ -127,6 +127,25 @@ app.all('/commodity',(req,res)=>{
         }
     })
 })
+// 商品详情页面的接口
+app.all('/commodityDetails',(req,res)=>{
+    res.header("Access-Control-Allow-Origin", "http://192.168.43.128:10086");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1')
+    res.header("Content-Type", "application/json;charset=utf-8");
+    const {id} =req.query;
+    const check=`select * from commodity where id='${id}'`
+    link.query(check,function(err,result){
+        if(err){
+            console.log(err)
+        }else{
+            
+            res.send(result)
+            res.end(err)
+        }
+    })
+})
 app.listen('8081',()=>{
     console.log('接口地址为:127.0.0.1:8081')
 })
