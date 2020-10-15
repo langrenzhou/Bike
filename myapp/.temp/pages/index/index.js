@@ -3,9 +3,12 @@ import Taro from "@tarojs/taro-h5";
 import { View } from '@tarojs/components';
 import './index.css';
 import HeaderSearch from "../../Component/HeaderSearch/index";
+import store from '../../store/index';
+import Swipers from "../../Component/swiper/index";
+import Channel from "../../Component/Channel/index";
 export default class Index extends Taro.Component {
   constructor() {
-    super(...arguments);
+    super();
     /**
      * 指定config的类型声明为: Taro.Config
      *
@@ -20,9 +23,13 @@ export default class Index extends Taro.Component {
   componentDidShow() {}
   componentDidHide() {}
   render() {
+    console.log(store.getState());
     return <View className="index">
-        <HeaderSearch />
-      </View>;
+       
+          <HeaderSearch />
+          <Swipers />
+          <Channel />
+        </View>;
   }
   config = {
     navigationBarTitleText: '比克优选'
