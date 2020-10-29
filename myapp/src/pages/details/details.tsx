@@ -66,8 +66,13 @@ class Details extends Component {
                               </View>
                          </View>
                          <View className='FooterLeft'>
-                           <View className='FooterRightItem' style='background-image: linear-gradient(135deg,#f2140c,#f2270c 70%,#f24d0c);'>加入购物车</View>
-                           <View className='FooterRightItem' style='background-image:linear-gradient(135deg,#ffba0d,#ffc30d 69%,#ffcf0d);'>立即购买</View>
+                           <View className='FooterRightItem' 
+                            style='background-image: linear-gradient(135deg,#f2140c,#f2270c 70%,#f24d0c);'
+                            onclick={this.JoinShoopingCar.bind(this)}
+                            >加入购物车</View>
+                           <View 
+                           className='FooterRightItem' style='background-image:linear-gradient(135deg,#ffba0d,#ffc30d 69%,#ffcf0d);'
+                           >立即购买</View>
                          </View>
                     </View>
                </View>

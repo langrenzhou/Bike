@@ -1,4 +1,4 @@
-import Taro, { Component } from '@tarojs/taro';
+import Taro, { Component, stopHCE } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import CommodityHeader from '../../Component/CommodityHeader'
 import Ajax from '../../../static/js/Axios'
@@ -16,7 +16,6 @@ class Commodity extends Component {
     componentWillMount() {
      
         Ajax.Axios_request('/commodity?type=' + this.$router.params.type).then(res => {
-      
             this.setState({ CommodityList: res.data })
         })
       console.log(this.state)
@@ -54,3 +53,18 @@ class Commodity extends Component {
     }
 }
 export default Commodity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
