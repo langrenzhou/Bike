@@ -2,6 +2,9 @@ const express =require('express')
 const app=express()
 const mysql=require('mysql')
 const MysqlQuery=require('./Promise')
+const bodyParser=require('body-parser')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:false}))
 const link=mysql.createConnection({
     host:"localhost",
     user:'root',
@@ -145,6 +148,18 @@ app.all('/commodityDetails',(req,res)=>{
             res.end(err)
         }
     })
+})
+// 用户加入购物车操作的接口
+app.all('/shoppingcar',(req,res)=>{
+    res.header("Access-Control-Allow-Origin", "http://192.168.43.128:10086");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1')
+    res.header("Content-Type", "application/json;charset=utf-8");
+    const {id} =req.query;
+    console.log(JSON.stringify(req.body))
+    res.send({hello:'world'})
+    // const check=`insert into shoppingcar (commodityName,commodityprice,commodityId,Number,commodityText,Userid) value ()`
 })
 app.listen('8081',()=>{
     console.log('接口地址为:127.0.0.1:8081')

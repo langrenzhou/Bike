@@ -3,6 +3,9 @@ import { View, Image } from '@tarojs/components'
 import './details.css'
 import Ajax from '../../../static/js/Axios'
 import { TwoShoppingCart, ShoppingCart, CustSer, TwoFavorites, Favorites } from '../../../static/js/Img'
+import store from '../../store/index'
+import { AtMessage } from 'taro-ui'
+import "taro-ui/dist/style/components/message.scss";
 class Details extends Component {
      constructor() {
           super()
@@ -22,16 +25,36 @@ class Details extends Component {
                })
           })
      }
+     JoinShoopingCar() {
+          const { Login } = store.getState()
+          const data = this.state.CommoditysDetails
+          console.log(data)
+          if (!Login) {
+
+               Taro.atMessage({
+                    'message': '您还没有登录，请进行登录',
+                    'type': 'error',
+               })
+               setTimeout(() => {
+                    Taro.navigateTo({ url: '/pages/Logins/Logins' })
+               }, 500);
+               return
+          }
+          Ajax.Axios_request('/shoppingcar', data, 'Post').then(res => {
+               console.log(res)
+          })
+     }
      render() {
           return (
                <View style='background-color:#f5f5f5;'>
+                    <AtMessage />
                     <View className='DetailsHeader'>
                          <View className='DetailsHeaderImg' >
                               <Image src={this.state.CommoditysDetails.IMGURL} style='width:100%;height:100%;'></Image>
                          </View>
                          <View className='DetailsNextBig' >
                               <View className='DetailsNext'>
-                                   <View className='DetailsNextLeft'onClick={()=>{Taro.navigateBack()}} >
+                                   <View className='DetailsNextLeft' onClick={() => { Taro.navigateBack() }} >
                                         <View style='width:.4rem;height:.4rem;font-size:0;'>
                                              <Image src={this.state.leftImg} style='width:100%;height:100%;'></Image>
                                         </View>
@@ -54,25 +77,25 @@ class Details extends Component {
                               </View>
                               <View className='FooterLeftItem'>
                                    <View className='FooterImg'>
-                                   <Image src={this.state.CustSer} style='width:100%;height:100%'></Image>
+                                        <Image src={this.state.CustSer} style='width:100%;height:100%'></Image>
                                    </View>
                                    <View className='FooterText'>客服</View>
                               </View>
                               <View className='FooterLeftItem'>
                                    <View className='FooterImg'>
-                                   <Image src={this.state.ShoppingCart} style='width:100%;height:100%'></Image>
+                                        <Image src={this.state.ShoppingCart} style='width:100%;height:100%'></Image>
                                    </View>
                                    <View className='FooterText'>购物车</View>
                               </View>
                          </View>
                          <View className='FooterLeft'>
-                           <View className='FooterRightItem' 
-                            style='background-image: linear-gradient(135deg,#f2140c,#f2270c 70%,#f24d0c);'
-                            onclick={this.JoinShoopingCar.bind(this)}
-                            >加入购物车</View>
-                           <View 
-                           className='FooterRightItem' style='background-image:linear-gradient(135deg,#ffba0d,#ffc30d 69%,#ffcf0d);'
-                           >立即购买</View>
+                              <View className='FooterRightItem'
+                                   style='background-image: linear-gradient(135deg,#f2140c,#f2270c 70%,#f24d0c);'
+                                   onclick={this.JoinShoopingCar.bind(this)}
+                              >加入购物车</View>
+                              <View
+                                   className='FooterRightItem' style='background-image:linear-gradient(135deg,#ffba0d,#ffc30d 69%,#ffcf0d);'
+                              >立即购买</View>
                          </View>
                     </View>
                </View>
