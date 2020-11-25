@@ -157,9 +157,23 @@ app.all('/shoppingcar',(req,res)=>{
     res.header("X-Powered-By",' 3.2.1')
     res.header("Content-Type", "application/json;charset=utf-8");
     const {id} =req.query;
-    console.log(JSON.stringify(req.body))
-    res.send({hello:'world'})
-    // const check=`insert into shoppingcar (commodityName,commodityprice,commodityId,Number,commodityText,Userid) value ()`
+    const commodity=JSON.parse(JSON.stringify(req.body))
+    console.log(commodity)
+    const check=`insert into shoppingcar (commodityName,commodityprice,commodityId,Number,commodityText,Userid) value ('${commodity.name}',${commodity.price},${commodity.Id},1,'${commodity.Introduction}',${commodity.userid})`
+    console.log(check)
+     link.query(check,function(err,result){
+         if(err){
+            console.log(err)
+         }else{
+             if(result.affectedRows == 1){
+                res.send({data:"success"})
+             }else{
+                 res.send({data:"error"})
+             }
+            
+         }
+         
+     })
 })
 app.listen('8081',()=>{
     console.log('接口地址为:127.0.0.1:8081')

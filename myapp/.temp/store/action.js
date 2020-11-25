@@ -11,7 +11,6 @@ export const UserLogin = value => ({
   value
 });
 export const UserCookieLogins = value => {
-
   return {
     type: UserCookieLogin,
     value

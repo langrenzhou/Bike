@@ -5,12 +5,15 @@ import './details.css';
 import Ajax from '../../../static/js/Axios';
 import { ShoppingCart, CustSer, Favorites } from '../../../static/js/Img';
 import store from '../../store/index';
-import { AtMessage } from 'taro-ui';
+import { AtMessage, AtToast } from 'taro-ui';
 import "taro-ui/dist/style/components/message.scss";
+import "taro-ui/dist/style/components/toast.scss";
+import "taro-ui/dist/style/components/icon.scss";
 class Details extends Taro.Component {
   constructor() {
     super();
     this.state = {
+      shoppingcar: false,
       Favorites,
       ShoppingCart,
       CustSer,
@@ -27,9 +30,8 @@ class Details extends Taro.Component {
     });
   }
   JoinShoopingCar() {
-    const { Login } = store.getState();
+    const { Login, UserInfo } = store.getState();
     const data = this.state.CommoditysDetails;
-    console.log(data);
     if (!Login) {
       Taro.atMessage({
         'message': '您还没有登录，请进行登录',
@@ -40,13 +42,18 @@ class Details extends Taro.Component {
       }, 500);
       return;
     }
-    Ajax.Axios_request('/shoppingcar', data, 'Post').then(res => {
-      console.log(res);
+    Ajax.Axios_request('/shoppingcar', { ...data, userid: UserInfo.id }, 'Post').then(res => {
+      if (res.data.data == 'success') {
+        this.setState({
+          shoppingcar: true
+        });
+      }
     });
   }
   render() {
     return <View style="background-color:#f5f5f5;">
                     <AtMessage />
+                    <AtToast isOpened={this.state.shoppingcar} text="添加成功"></AtToast>
                     <View className="DetailsHeader">
                          <View className="DetailsHeaderImg">
                               <Image src={this.state.CommoditysDetails.IMGURL} style="width:100%;height:100%;"></Image>
