@@ -2,6 +2,8 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import Index from './pages/index'
 import './app.css'
 import   '../static/js/zyl.js'
+import store from '../src/store/index'
+import { UserInfoLogin,UserLogin } from '../src/store/action'
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
@@ -11,6 +13,20 @@ import   '../static/js/zyl.js'
 class App extends Component {
 
   componentDidMount () {
+    const cookie=document.cookie
+    const {Login,UserInfo}=store.getState()
+    if(cookie !=''){
+      console.log(cookie)
+    const cookieArr=cookie.split(';')
+    const Img= cookieArr[0].indexOf('Img') != -1 ? cookieArr[0].split('=')[1] :  cookieArr[1].indexOf('Img') != -1 ? cookieArr[1].split('=')[1] :  cookieArr[2].split('=')[1];
+    const id=cookieArr[0].indexOf('id') != -1 ? cookieArr[0].split('=')[1] :  cookieArr[1].indexOf('id') != -1 ? cookieArr[1].split('=')[1] :  cookieArr[2].split('=')[1];
+    const Name=cookieArr[0].indexOf('Name') != -1 ? cookieArr[0].split('=')[1] :  cookieArr[1].indexOf('Name') != -1 ? cookieArr[1].split('=')[1] :  cookieArr[2].split('=')[1];
+   
+      const UserLoginInfoaction = UserInfoLogin({Img,id,Name})
+      store.dispatch(UserLoginInfoaction)
+      const UserLoginaction = UserLogin(true)
+      store.dispatch(UserLoginaction)
+    }
   }
 
   componentDidShow () {}

@@ -20,7 +20,6 @@ export default (state=defaultState,action)=>{
     if(action.type == UserCookieLogin){
         const newState=JSON.parse(JSON.stringify(state))
         newState.UserInfo=action.value
-        console.log(newState)
         return newState
     }   
     return state

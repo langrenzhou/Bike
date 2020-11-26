@@ -116,7 +116,7 @@ class Logins extends Taro.Component {
       }
     } else {
       Ajax.Axios_request(`/Logins?Name=${Phone}&Password=${Code}`, {}).then(res => {
-        const { Name, Img } = res.data[0];
+        const { Name, Img, id } = res.data[0];
         const date = new Date();
         if (Name) {
           Taro.atMessage({
@@ -131,8 +131,8 @@ class Logins extends Taro.Component {
           const expires = new Date(Number(date.getTime()) + 259200000).toGMTString();
           document.cookie = `userName=${Name};expires=${expires}`;
           document.cookie = `userImg=${Img};expires=${expires}`;
+          document.cookie = `userid=${id};expires=${expires}`;
           setTimeout(() => {
-            console.log(store.getState());
             Taro.navigateBack();
           }, 1000);
         } else if (res == '错误') {
